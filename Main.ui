@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main_AI_window</class>
+ <widget class="QMainWindow" name="main_AI_window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>912</width>
+    <height>676</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="AI_chat">
+   <property name="styleSheet">
+    <string notr="true">QWidget#AI_chat {
+    background-color: #0f172a;
+    color: #e5e7eb;
+}
+
+QTextEdit {
+    background-color: #020617;
+    color: #e5e7eb;
+    border-radius: 6px;
+    padding: 6px;
+    border: 1px solid #1e293b;
+}
+
+QTextEdit#Ai_output {
+    font-family: "JetBrains Mono", "Consolas", monospace;
+    font-size: 11pt;
+}
+
+QPushButton {
+    background-color: #2563eb;
+    color: #f9fafb;
+    border-radius: 6px;
+    padding: 6px 12px;
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #1d4ed8;
+}
+
+QPushButton:disabled {
+    background-color: #1e293b;
+    color: #9ca3af;
+}
+
+QFrame#protocolFrame {
+    background-color: #020617;
+    border-radius: 6px;
+    border: 1px solid #1e293b;
+}
+
+QScrollArea {
+    border: none;
+}
+
+QCheckBox {
+    color: #e5e7eb;
+}
+
+QLabel {
+    color: #e5e7eb;
+}
+
+QStatusBar {
+    color: #e5e7eb;
+}</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_main">
+       <item>
+        <widget class="QTextEdit" name="Ai_output">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>260</height>
+          </size>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_2">
+         <property name="frameShape">
+          <enum>QFrame::Shape::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_bottom">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_input">
+            <item>
+             <widget class="QTextEdit" name="input_box">
+              <property name="readOnly">
+               <bool>false</bool>
+              </property>
+              <property name="placeholderText">
+               <string>Ask the AI a question about the capture, or request a specific type of analysis...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_buttons">
+              <item>
+               <widget class="QPushButton" name="SendBtn">
+                <property name="text">
+                 <string>Send</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="DelBtn">
+                <property name="text">
+                 <string>Clear</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="ScanBtn">
+                <property name="text">
+                 <string>Scan PCAP…</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="protocolFrame">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_protocol">
+             <item>
+              <widget class="QLabel" name="protocolLabel">
+               <property name="text">
+                <string>Protocol filters</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_category">
+               <item>
+                <widget class="QLabel" name="categoryLabel">
+                 <property name="text">
+                  <string>Category:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="categoryCombo"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="selectAllBtn">
+               <property name="text">
+                <string>Select all</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="selectedLabel">
+               <property name="text">
+                <string>Selected protocols</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListWidget" name="selectedList"/>
+             </item>
+             <item>
+              <widget class="QScrollArea" name="scrollArea">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="protocol_list">
+                <property name="styleSheet">
+                 <string notr="true">background-color: #020617;</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <item>
+                  <widget class="QCheckBox" name="TCPcheck">
+                   <property name="text">
+                    <string>TCP</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="UDPcheck">
+                   <property name="text">
+                    <string>UDP</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="HTTPcheck">
+                   <property name="text">
+                    <string>HTTP</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="HTTPScheck">
+                   <property name="text">
+                    <string>HTTPS</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="TLScheck">
+                   <property name="text">
+                    <string>TLS</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="ICMPcheck">
+                   <property name="text">
+                    <string>ICMP</string>
+                   </property>
+                  </widget>
+                 </item>
+                <item>
+                 <widget class="QCheckBox" name="ARPcheck">
+                  <property name="text">
+                   <string>ARP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="DNScheck">
+                  <property name="text">
+                   <string>DNS</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="DHCPcheck">
+                  <property name="text">
+                   <string>DHCP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="FTPcheck">
+                  <property name="text">
+                   <string>FTP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="FTPDATAcheck">
+                  <property name="text">
+                   <string>FTP-DATA</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="SSHcheck">
+                  <property name="text">
+                   <string>SSH</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="Telnetcheck">
+                  <property name="text">
+                   <string>Telnet</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="SMTPcheck">
+                  <property name="text">
+                   <string>SMTP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="POP3check">
+                  <property name="text">
+                   <string>POP3</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IMAPcheck">
+                  <property name="text">
+                   <string>IMAP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="SMBcheck">
+                  <property name="text">
+                   <string>SMB</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="NFScheck">
+                  <property name="text">
+                   <string>NFS</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="SNMPcheck">
+                  <property name="text">
+                   <string>SNMP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="RDPcheck">
+                  <property name="text">
+                   <string>RDP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="SIPcheck">
+                  <property name="text">
+                   <string>SIP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="RTPcheck">
+                  <property name="text">
+                   <string>RTP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="RTCPcheck">
+                  <property name="text">
+                   <string>RTCP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="MQTTcheck">
+                  <property name="text">
+                   <string>MQTT</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="Modbuscheck">
+                  <property name="text">
+                   <string>Modbus</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="WifiCheck">
+                  <property name="text">
+                   <string>Wi-Fi (802.11)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="BluetoothCheck">
+                  <property name="text">
+                   <string>Bluetooth</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="ZigBeeCheck">
+                  <property name="text">
+                   <string>ZigBee</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="USBcheck">
+                  <property name="text">
+                   <string>USB</string>
+                  </property>
+                 </widget>
+                </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="tsharkLabel">
+               <property name="text">
+                <string>Manual tshark command</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="tsharkCommandEdit">
+               <property name="placeholderText">
+                <string>e.g. tshark -r pcaps/sample.pcap -Y &quot;dns&quot; -V</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="tsharkRunBtn">
+               <property name="text">
+                <string>Run tshark</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

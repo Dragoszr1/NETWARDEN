@@ -1,0 +1,43 @@
+{
+  "Network & Transport": [
+    {"name": "TCP", "filter": "tcp"},
+    {"name": "UDP", "filter": "udp"},
+    {"name": "ICMP", "filter": "icmp || icmpv6"},
+    {"name": "ARP", "filter": "arp"}
+  ],
+  "Core Services": [
+    {"name": "DNS", "filter": "dns"},
+    {"name": "DHCP", "filter": "bootp || dhcp"},
+    {"name": "SMB", "filter": "smb || nbss || nbns"},
+    {"name": "NFS", "filter": "nfs"},
+    {"name": "SNMP", "filter": "snmp"},
+    {"name": "RDP", "filter": "tpkt && rdp"}
+  ],
+  "Application": [
+    {"name": "HTTP", "filter": "http"},
+    {"name": "HTTPS", "filter": "tls || ssl"},
+    {"name": "TLS", "filter": "tls || ssl"},
+    {"name": "FTP", "filter": "ftp"},
+    {"name": "FTP-DATA", "filter": "ftp-data"},
+    {"name": "SSH", "filter": "ssh"},
+    {"name": "Telnet", "filter": "telnet"},
+    {"name": "SMTP", "filter": "smtp"},
+    {"name": "POP3", "filter": "pop"},
+    {"name": "IMAP", "filter": "imap"},
+    {"name": "SIP", "filter": "sip"},
+    {"name": "RTP", "filter": "rtp"},
+    {"name": "RTCP", "filter": "rtcp"},
+    {"name": "MQTT", "filter": "mqtt"},
+    {"name": "Modbus", "filter": "modbus"},
+    {"name": "QUIC", "filter": "quic"}
+  ],
+  "Wireless & IoT": [
+    {"name": "Wi-Fi (802.11)", "filter": "wlan"},
+    {"name": "Bluetooth", "filter": "bluetooth"},
+    {"name": "ZigBee", "filter": "zbee_nwk || zbee_aps || zbee_zdp"}
+  ],
+  "Host & Peripheral": [
+    {"name": "USB", "filter": "usb"},
+    {"name": "USB Mass Storage", "filter": "usbms"}
+  ]
+}
