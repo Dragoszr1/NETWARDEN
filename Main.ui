@@ -126,6 +126,13 @@ QStatusBar {
                </widget>
               </item>
               <item>
+               <widget class="QPushButton" name="StopBtn">
+                <property name="text">
+                 <string>Stop</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QPushButton" name="DelBtn">
                 <property name="text">
                  <string>Clear</string>
@@ -174,11 +181,22 @@ QStatusBar {
               </layout>
              </item>
              <item>
-              <widget class="QPushButton" name="selectAllBtn">
-               <property name="text">
-                <string>Select all</string>
-               </property>
-              </widget>
+              <layout class="QHBoxLayout" name="horizontalLayout_select_buttons">
+               <item>
+                <widget class="QPushButton" name="selectAllBtn">
+                 <property name="text">
+                  <string>Select all</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="uncheckAllBtn">
+                 <property name="text">
+                  <string>Uncheck all</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
               <widget class="QLabel" name="selectedLabel">
@@ -417,7 +435,7 @@ QStatusBar {
              <item>
               <widget class="QLineEdit" name="tsharkCommandEdit">
                <property name="placeholderText">
-                <string>e.g. tshark -r pcaps/sample.pcap -Y &quot;dns&quot; -V</string>
+                <string>e.g. tshark -r sample.pcap -Y &quot;dns&quot; -V (executes from pcaps directory)</string>
                </property>
               </widget>
              </item>
